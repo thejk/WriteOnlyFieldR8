@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+android {
+    signingConfigs {
+        config {
+            keyAlias 'alias'
+            keyPassword 'password'
+            storeFile rootProject.file('sign.keystore')
+            storePassword 'password'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "org.the_jk.write_only_field_r8"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+}
